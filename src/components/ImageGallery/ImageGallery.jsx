@@ -21,18 +21,20 @@ export default function ImageGallery({items, onClick, children}) {
  )   
 }
 
-// ContactList.defaultProps = {
-//     contacts: [],
-//     onDelete: () => {}
-// };
+ImageGallery.defaultProps = {
+  onClick: () => {},
+  items: []
+};
   
-// ContactList.propTypes = {
-//     contacts: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           id: PropTypes.string,
-//           name: PropTypes.string,
-//           number: PropTypes.string
-//         })
-//       ).isRequired,
-//     onDelete: PropTypes.func.isRequired
-// };
+ImageGallery.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          webformatURL: PropTypes.string,
+          largeImageURLs: PropTypes.string,
+          tag: PropTypes.string
+        })
+      ).isRequired,
+      onClick: PropTypes.func.isRequired,
+      children: PropTypes.element.isRequired
+};

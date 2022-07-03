@@ -95,7 +95,8 @@ export default class App extends Component {
       <div className='App'>
         {modalOpen && <Modal close={closeModal} data={modalContent}/>}
         <Searchbar onSubmit={handleFormSubmit} />
-        {searchWord && items.length === 0 && <h2 className='wrongWord'>No matches with tag "{searchWord}", try another one</h2>}
+        {error && <p>Cant load photos</p>}
+        {searchWord && items.length === 0 && !isLoading && <h2 className='wrongWord'>No matches with tag "{searchWord}", try another one</h2>}
         {searchWord && items.length > 0 && <ImageGallery items={items} onClick={showModal} >
           <Button onClick={loadMore}/>
         </ImageGallery>}
