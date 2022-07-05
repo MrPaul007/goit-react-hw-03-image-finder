@@ -93,7 +93,9 @@ export default class App extends Component {
     const {searchWord, error, items, isLoading, modalOpen, modalContent} = this.state;
     return (
       <div className='App'>
-        {modalOpen && <Modal close={closeModal} data={modalContent}/>}
+        {modalOpen && <Modal close={closeModal} >
+                        <img src={modalContent.src} alt={modalContent.alt} />
+                      </Modal>}
         <Searchbar onSubmit={handleFormSubmit} />
         {error && <p>Cant load photos</p>}
         {searchWord && items.length === 0 && !isLoading && <h2 className='wrongWord'>No matches with tag "{searchWord}", try another one</h2>}

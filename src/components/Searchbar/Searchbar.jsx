@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from "prop-types";
 
 export default class Searchbar extends Component {
   state = {
@@ -16,15 +17,17 @@ export default class Searchbar extends Component {
   };
 
   render() {
+    const { handleChange, handleSubmit } = this;
+
     return (
       <header className="searchbar">
-        <form className="searchForm" onSubmit={this.handleSubmit}>
+        <form className="searchForm" onSubmit={handleSubmit}>
           <button type="submit" className="searchFormButton">
             <span className="searchFormButtonLabel">Search</span>
           </button>
       
           <input
-            onChange={this.handleChange}
+            onChange={handleChange}
             className="searchFormInput"
             type="text"
             autoComplete="off"
@@ -37,3 +40,11 @@ export default class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.defaultProps = {
+  onSubmit: () => {}
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
